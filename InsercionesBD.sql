@@ -1,0 +1,3 @@
+USE recomendaciones;
+
+INSERT INTO doctores (nombre,apellido_p,apellido_m,cedula,fecha_nac,telefono,correo,especialidad) VALUES ('Augustina','Thormann','Hulbert','0472-5242','1985-01-16','5589692468','ahulbert0@utexas.edu','Cardiologo'),('Judith','Troctor','Gordon-Giles','52686-257','1984-06-12','5526632328','jgordongiles1@livejournal.com','General'),('Lorette','Maysor','O Meara','57520-1043','1988-07-30','5513472545','lomeara2@ucoz.ru','General'),('Rahel','Pittwood','Troup','11344-626','1988-01-16','5543507825','rtroup3@umich.edu','Cardiologo'),('Judas','Aisthorpe','Filer','50390-701','1986-04-27','5526913108','jfiler4@nbcnews.com','Endocrinologo'),('Ferdinande','Mortlock','Sandford','35356-843','1985-11-30','5563724234','fsandford5@diigo.com','Endocrinologo');
