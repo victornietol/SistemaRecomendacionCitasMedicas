@@ -33,7 +33,7 @@
       </nav>
     </div>
     <div class="container">
-        <form>
+        <form action="respuesta.php" method="post">
             <fieldset class="row mb-3">
                 <legend class="col-form-label col-sm-12">Seleccione sus síntomas</legend>
                 <div class="col-sm-12">
