@@ -21,16 +21,11 @@ for i in sintomas:
   if i in sintomasCardio:
     card +=1
   if i in sintomasEndocrino:
-    card +=1
+    end +=1
   if i in sintomasGeneral:
-    card +=1
+    gen +=1
 
 valores = {'Cardiologo':card,'Endocrinologo':end,'General':gen}
-valores_ord = {k: v for k, v in sorted(valores.items())}
-if list(valores.values()).count(0) > 1:
-  print(list(valores_ord.keys())[0])
-  print("general")
-else:
-    print(list(valores_ord.keys())[0])
-    print("general")
+valores_ord = {k: v for k, v in sorted(valores.items(),reverse=True)}
+print(list(valores_ord.keys())[0])
 
