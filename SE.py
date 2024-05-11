@@ -6,14 +6,12 @@ sintomas = sintomas.parse_args()
 sintomas = sintomas._get_kwargs()[0][1]
 
 #Sintomas cardiobasculares generales
-sintomasCardio = set(["dolorPecho","faltaDeAire","frioPiernas","frioBrazos","dolorEspalda","dolorCuello"])
+sintomasCardio = set(["dolorPecho","dificultadRespirar","frioPiernas","frioBrazos","dolorEspalda","dolorCuello"])
 #Sintomas cardiobasculaes generales
-sintomasEndocrino = set(["cansancio","hormigueoExtremidades","pérdidaPeso ","insomnio","aumentoPeso"])
+sintomasEndocrino = set(["fatiga","hormigueoExtremidades","perdidaPeso","insomnio","aumentoPeso"])
 #Sintomas Generales
-sintomasGeneral = set(["tos","moqueos","dolorGarganta","fiebre","dolorCabeza","enrojecimientoPiel","inflamacionPiel","dolorOrinar"])
+sintomasGeneral = set(["tos","congestionNasal","dolorGarganta","fiebre","dolorCabeza","enrojecimientoPiel","inflamacionPiel","dolorOrinar","vomitos","diarrea"])
 #Sintomas del usuario
-
-
 card = 0
 end = 0
 gen = 0
@@ -26,6 +24,6 @@ for i in sintomas:
     gen +=1
 
 valores = {'Cardiologo':card,'Endocrinologo':end,'General':gen}
-valores_ord = {k: v for k, v in sorted(valores.items(),reverse=True)}
+valores_ord = dict(sorted(valores.items(), key=lambda item: item[1],reverse=True))
 print(list(valores_ord.keys())[0])
 
