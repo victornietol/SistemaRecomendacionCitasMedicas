@@ -30,10 +30,7 @@ $sintomasGenerales = array(
 );
 
 
-$sintomasA = array(
-    "frioPiernas",
-    "perdidaPeso"
-);
+$sintomasA = $_SESSION["sintomas"];
 
 $gen = 0;
 $end = 0;
@@ -63,5 +60,5 @@ $valores1 = [
 arsort($valores1);
 
 
-echo array_keys($valores1)[0];
+return array_keys($valores1)[0];
 ?>
