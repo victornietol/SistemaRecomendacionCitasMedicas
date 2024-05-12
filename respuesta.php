@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and !empty($_POST["gridSintomas"])) {
     }
 } else {
     // Si no se enviaron datos del formulario, mostrar un mensaje de error o redirigir a otra página
-    echo "No se recibieron datos del formulario";
+    header("location: sintomas_error.php");
 }
 echo "</body>";
 ?>
