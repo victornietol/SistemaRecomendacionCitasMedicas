@@ -11,8 +11,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and !empty($_POST["gridSintomas"])) {
     $_SESSION["sintomas"] = $sintomas;
 
     //Obtenemos la clasificación
-    $read = require ("SE.php");
-
+    $clasificacion = require ("KBS.php");
+    $_SESSION["clasificacion"] = $clasificacion;
     //Generamos la coneccion en la DB
     $user = "example_user";
     $password = "password";
@@ -20,26 +20,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and !empty($_POST["gridSintomas"])) {
     $table = "doctores";
     $db = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
 
-    if ($read == "General") {
+    if ($clasificacion == "General") {
         try {
-            //Este echo es para 
+            //Consulta
             $consult = "SELECT nombre,apellido_p,apellido_m,telefono,correo  FROM $table WHERE especialidad = 'General'";
-
-            echo "<h2>Lista de Doctores Generales Recomendados</h2>";
-            echo "<table class='table'>";
-            echo "<thead><tr><th scope='col'>Nombre</th><th scope='col'>Apellido paterno</th><th scope='col'>Apellido materno</th><th scope='col'>telefono</th><th scope='col'>correo</th></tr></thead>";
-            echo "<tbody>";
+            //variable que almacena la tabla en modo de string
+            $_SESSION["consult1"] = "";
             foreach ($db->query($consult) as $row) {
-                echo "<tr>";
-                echo "<td>" . $row['nombre'] . "</td>";
-                echo "<td>" . $row['apellido_p'] . "</td>";
-                echo "<td>" . $row['apellido_m'] . "</td>";
-                echo "<td>" . $row['telefono'] . "</td>";
-                echo "<td>" . $row['correo'] . "</td>";
-                echo "</tr>";
+                $_SESSION["consult1"] .= "<tr>" . "<td>" . $row['nombre'] . "</td>" . "<td>" . $row['apellido_p'] . "</td>" . "<td>" . $row['apellido_m'] . "</td>" . "<td>" . $row['telefono'] . "</td>" . "<td>" . $row['correo'] . "</td>";
             }
-            echo "</tbody>";
-            echo "</table>";
+            //Redireccionamiento a general.php
+            header("location: general.php");
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();
@@ -47,39 +38,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and !empty($_POST["gridSintomas"])) {
     } else {
         try {
             //Este echo es para 
-            $consult = sprintf("SELECT nombre,apellido_p,apellido_m,telefono,correo  FROM $table WHERE especialidad = '%s'", $read);
-            echo sprintf("<h2>Lista de Doctores %ss Recomendados</h2>", $read);
-            echo "<table class='table'>";
-            echo "<thead><tr><th scope='col'>Nombre</th><th scope='col'>Apellido paterno</th><th scope='col'>Apellido materno</th><th scope='col'>telefono</th><th scope='col'>correo</th></tr></thead>";
-            echo "<tbody>";
+            $consult = sprintf("SELECT nombre,apellido_p,apellido_m,telefono,correo  FROM $table WHERE especialidad = '%s'", $clasificacion);
+            //variable que almacena la tabla en modo de string
+            $_SESSION["consult2"] = "";
             foreach ($db->query($consult) as $row) {
-                echo "<tr>";
-                echo "<td>" . $row['nombre'] . "</td>";
-                echo "<td>" . $row['apellido_p'] . "</td>";
-                echo "<td>" . $row['apellido_m'] . "</td>";
-                echo "<td>" . $row['telefono'] . "</td>";
-                echo "<td>" . $row['correo'] . "</td>";
-                echo "</tr>";
+                $_SESSION["consult2"] .= "<tr>" . "<td>" . $row['nombre'] . "</td>" . "<td>" . $row['apellido_p'] . "</td>" . "<td>" . $row['apellido_m'] . "</td>" . "<td>" . $row['telefono'] . "</td>" . "<td>" . $row['correo'] . "</td>";
+
             }
-            echo "</tbody>";
-            echo "</table>";
 
             $consult1 = "SELECT nombre,apellido_p,apellido_m,telefono,correo  FROM $table WHERE especialidad = 'General'";
-            echo "<h2>Lista de Doctores Generales Recomendados</h2>";
-            echo "<table class='table'>";
-            echo "<thead><tr><th scope='col'>Nombre</th><th scope='col'>Apellido paterno</th><th scope='col'>Apellido materno</th><th scope='col'>telefono</th><th scope='col'>correo</th></tr></thead>";
-            echo "<tbody>";
+            $_SESSION["consult3"] = "";
+
             foreach ($db->query($consult1) as $row) {
-                echo "<tr>";
-                echo "<td>" . $row['nombre'] . "</td>";
-                echo "<td>" . $row['apellido_p'] . "</td>";
-                echo "<td>" . $row['apellido_m'] . "</td>";
-                echo "<td>" . $row['telefono'] . "</td>";
-                echo "<td>" . $row['correo'] . "</td>";
-                echo "</tr>";
+                $_SESSION["consult3"] .= "<tr>" . "<td>" . $row['nombre'] . "</td>" . "<td>" . $row['apellido_p'] . "</td>" . "<td>" . $row['apellido_m'] . "</td>" . "<td>" . $row['telefono'] . "</td>" . "<td>" . $row['correo'] . "</td>";
+
             }
-            echo "</tbody>";
-            echo "</table>";
+
+            header("location: especialidad.php");
 
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
