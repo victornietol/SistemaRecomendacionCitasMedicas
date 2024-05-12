@@ -4,7 +4,7 @@ require ("header.php");
 echo "<body>";
 require ("navigationMenu.php");
 // Verificar si se enviaron datos del formulario
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" and !empty($_POST["gridSintomas"])) {
     // Recuperar los datos del formulario
     $sintomas = $_POST["gridSintomas"]; // Se recuperan los valores de los checkbox seleccionados
 
