@@ -17,9 +17,8 @@ require ("header.php");
     <img src="doc.jpg" class="rounded mx-auto d-block" alt="..." width="500px" height="500px">
   </div>
   <div class="desc">
-    <p>Contesta el cuestionario con los sintomas que presentas y en seguida nuestro sistema experto te recomendará al
+    <p>Contesta el cuestionario con los sintomas que presentas y en seguida nuestro sistema te recomendará al
       especialista que necesitas</p>
-    <p>En la barra de navegacion esta la pestaña de Doctores en donde encontrarás el contacto de cada uno </p>
     <p>Contamos con doctores muy bien calificados con los cuales puedes agendar tu cita</p>
   </div>
 </body>
