@@ -2,11 +2,13 @@
 <html lang="es">
 
 <?php
+//llamamos el header
 require ("header.php");
 ?>
 
 <body>
   <?php
+  //Llamamos la barra de navegacion
   require ("navigationMenu.php");
   ?>
   </div>

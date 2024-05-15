@@ -1,3 +1,4 @@
+<!-- Header de todas las paginas  --> 
 <!DOCTYPE html>
 <html lang="es">
 

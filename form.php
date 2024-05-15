@@ -1,12 +1,15 @@
 <?php
+//Llamamos el header
 require ("header.php");
   ?>
 
 <body>
   <?php
+  //Llamamos la barra de navegacion
   require ("navigationMenu.php");
     ?>
   </div>
+  <!-- Form de metodo post de todos los sintomas existentes dentor del KBS  --> 
   <div class="container">
     <form action="respuesta.php" method="post">
       <fieldset class="row mb-3">
